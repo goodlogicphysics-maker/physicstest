@@ -1,2 +1,2 @@
-# physicstest
-Just my project for programming some things
+# Physics Test
+Just my project for programming physics and practical envroment.
