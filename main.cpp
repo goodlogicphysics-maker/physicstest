@@ -1,12 +1,14 @@
 #include <iostream>
 
+double fps = 60.0;
+const double dt = 1.0/fps;
 const double g = 9.8;
 
 class PhysicalObject
 {
 private:
 public:
-  double calcGravity(double* height,double time);
+  double calcGravity(double* const ptrHeight);
   bool isGravObj;
 };
 
@@ -18,26 +20,25 @@ int main()
   std::cout << "Write object that downing from height -> ";
   std::cin >> height;
   ptrHeight = &height;
-  double time;
-  std::cout << "Write object downing time -> ";
-  std::cin >> time;
   PhysicalObject objGravity;
   objGravity.isGravObj = true;
-  while(i <= time)
+  
+  while(0 <= height)
   {
-    objGravity.calcGravity(ptrHeight,i);
+    objGravity.calcGravity(ptrHeight);
     std::cout << "Height -> " << height << std::endl;
     std::cout << "Time -> " << i << std::endl;
-    i = i + 1.0;
+    i = i + dt;
   }
   return 0;
 }
 
-double PhysicalObject::calcGravity(double* const ptrHeight,double time)
+double PhysicalObject::calcGravity(double* const ptrHeight)
 {
   if(isGravObj)
   {
-    *ptrHeight = *ptrHeight - (0.5*g*time*time);
+    
+    *ptrHeight = *ptrHeight - (0.5*g*dt*dt);
     return *ptrHeight;
   }
   else
