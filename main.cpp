@@ -28,7 +28,7 @@ int main()
     objGravity.calcGravity(ptrHeight);
     std::cout << "Height -> " << height << std::endl;
     std::cout << "Time -> " << i << std::endl;
-    i = i + dt;
+    i += dt;
   }
   return 0;
 }
